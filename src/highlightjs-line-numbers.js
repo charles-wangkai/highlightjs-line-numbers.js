@@ -15,6 +15,7 @@
         w.hljs.initLineNumbersOnLoad = initLineNumbersOnLoad;
         w.hljs.lineNumbersBlock = lineNumbersBlock;
         w.hljs.lineNumbersValue = lineNumbersValue;
+        w.hljs.initLineNumbers = documentReady;
 
         addStyles();
     } else {
@@ -229,7 +230,7 @@
                         DATA_ATTR_NAME,
                         CODE_BLOCK_NAME,
                         i + 1,
-                        lines[i].length > 0 ? lines[i] : ' '
+                        lines[i].length > 0 ? lines[i] : '\n'
                     ]
                 );
             }
@@ -273,7 +274,7 @@
         var lines = getLines(element.innerHTML);
 
         for (var i = 0, result = ''; i < lines.length; i++) {
-            var lineText = lines[i].length > 0 ? lines[i] : ' ';
+            var lineText = lines[i].length > 0 ? lines[i] : '\n';
             result += format('<span class="{0}">{1}</span>\n', [
                 className,
                 lineText
